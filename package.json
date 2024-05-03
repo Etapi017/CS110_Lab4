@@ -1,0 +1,13 @@
+{
+  "name": "lab_4",
+  "version": "1.0.0",
+  "description": "Important note before you get started. Please implement all your HTML in index.html, CSS in style.css and JavaScript in main.js to make it easy to lookup relevant portions of the codebase. You should also create a readme to describe any implementation details or list external libraries utilized. You can again work in groups of two on this assignment. If you do work as part of a team, then be sure to add your partner to the Gradescope submission.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
