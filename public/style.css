@@ -1,0 +1,60 @@
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    width: 200px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: #f0f0f0;
+    padding: 20px;
+}
+
+.filter-section p {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.article-container {
+    margin-left: 220px;
+    padding: 20px;
+}
+
+.article {
+    background: white;
+    margin-bottom: 20px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.article img {
+    width: 100%;
+    height: auto;
+}
+
+.article h3 {
+    margin: 5px 0;
+}
+
+.article p {
+    color: #666;
+}
+
+/* Responsive styles for screen widths less than 900px */
+@media (max-width: 900px) {
+    .sidebar {
+        width: 100%;
+        position: relative;
+        height: auto;
+    }
+
+    .article-container {
+        margin-left: 0;
+        padding: 10px;
+    }
+}
