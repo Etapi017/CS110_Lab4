@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Filter</h2>
+        <div class="filter-section">
+            <p>Sort By:</p>
+            <input type="radio" id="most-viewed" name="sort" value="mostViewed">
+            <label for="most-viewed">Most Viewed</label><br>
+            <input type="radio" id="most-shared" name="sort" value="mostShared">
+            <label for="most-shared">Most Shared</label><br>
+            <input type="radio" id="most-emailed" name="sort" value="mostEmailed">
+            <label for="most-emailed">Most Emailed</label>
+        </div>
+        <div class="filter-section">
+            <p>Time Frame:</p>
+            <input type="radio" id="day" name="time" value="day">
+            <label for="day">Day</label><br>
+            <input type="radio" id="week" name="time" value="week">
+            <label for="week">Week</label><br>
+            <input type="radio" id="month" name="time" value="month">
+            <label for="month">Month</label>
+        </div>
+    </div>
+    <div class="article-container">
+        <!-- Articles  -->
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
