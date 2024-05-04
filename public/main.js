@@ -5,10 +5,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function loadArticles() {
-        // Placeholder function to demonstrate loading articles
-        // This function should make an API call or filter data based on the selected criteria
-        articlesContainer.innerHTML = ''; // Clear existing articles
-        for (let i = 0; i < 5; i++) { // Dummy data loop
+        //Function to demonstrate loading articles
+        //Function makes an API call or filter data based on the criteria
+        articlesContainer.innerHTML = ''; //Clear articles
+        for (let i = 0; i < 5; i++) { //Beta data loop
             const articleDiv = document.createElement('div');
             articleDiv.className = 'article';
             articleDiv.innerHTML = `<h3>Article Title ${i+1}</h3>
@@ -18,5 +18,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    loadArticles(); // Load initial articles
+    loadArticles(); //Load articles
 });

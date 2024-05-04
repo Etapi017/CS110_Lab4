@@ -45,7 +45,7 @@ body, html {
     color: #666;
 }
 
-/* Responsive styles for screen widths less than 900px */
+/* Responsive for screen widths less than 900px */
 @media (max-width: 900px) {
     .sidebar {
         width: 100%;
