@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const articlesContainer = document.querySelector('.article-container');
-    const apiKey = 'KtdAxMvdsmo0lF65Qj2i8QRfUUBgJINf';  // Your API key
+    const apiKey = 'KtdAxMvdsmo0lF65Qj2i8QRfUUBgJINf';  //API key
     const baseUrl = 'https://api.nytimes.com/svc/mostpopular/v2/';
 
     // Function to fetch and display articles based on sort type and period
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => console.error('Error fetching data:', error));
     }
 
-    // Build the URL for the API request
+    //URL for the API request
     function buildUrl(type, period) {
         let endpoint = '';
         switch (type) {
@@ -28,19 +28,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 endpoint = `emailed/${period}.json`;
                 break;
             case 'mostShared':
-                // Assuming 'facebook' as a share type, adjust if different share types are needed
+                //'facebook' 
                 endpoint = `shared/${period}/facebook.json`;
                 break;
             default:
-                endpoint = `viewed/${period}.json`; // Default case to handle unexpected types
+                endpoint = `viewed/${period}.json`; //Default case
         }
         return `${baseUrl}${endpoint}?api-key=${apiKey}`;
     }
 
-    // Update the DOM with the fetched articles
+    //Update the DOM with the fetched articles
     function displayArticles(articles) {
-        articlesContainer.innerHTML = ''; // Clear the container before adding new articles
-        articles.slice(0, 5).forEach(article => { // Only display the top 5 articles
+        articlesContainer.innerHTML = '';
+        articles.slice(0, 5).forEach(article => { //Only display the top 5 articles
             const articleDiv = document.createElement('div');
             articleDiv.className = 'article';
             articleDiv.innerHTML = `
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Listen for changes on the 'Sort By' and 'Time Frame' radio buttons
+    //Listen for changes on the 'Sort By' and 'Time Frame'
     document.querySelectorAll('input[name="sort"], input[name="time"]').forEach(input => {
         input.addEventListener('change', () => {
             const period = document.querySelector('input[name="time"]:checked').value;
@@ -62,6 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Initial load for the default setting
-    loadArticles('mostViewed', 1); // Default to most viewed articles for the past day
+    
+    loadArticles('mostViewed', 1);
 });
