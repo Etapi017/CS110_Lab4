@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     const articlesContainer = document.querySelector('.article-container');
-    const apiKey = 'KtdAxMvdsmo0lF65Qj2i8QRfUUBgJINf';  //API key
+    const apiKey = 'KtdAxMvdsmo0lF65Qj2i8QRfUUBgJINf';
     const baseUrl = 'https://api.nytimes.com/svc/mostpopular/v2/';
 
-    // Function to fetch and display articles based on sort type and period
+    // Fetch and display articles based on sort type and period
     function loadArticles(type, period) {
         const url = buildUrl(type, period);
         fetch(url)
@@ -17,43 +17,41 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => console.error('Error fetching data:', error));
     }
 
-    //URL for the API request
+    // URL for the API request
     function buildUrl(type, period) {
-        let endpoint = '';
-        switch (type) {
-            case 'mostViewed':
-                endpoint = `viewed/${period}.json`;
-                break;
-            case 'mostEmailed':
-                endpoint = `emailed/${period}.json`;
-                break;
-            case 'mostShared':
-                //'facebook' 
-                endpoint = `shared/${period}/facebook.json`;
-                break;
-            default:
-                endpoint = `viewed/${period}.json`; //Default case
-        }
+        let endpoint = type === 'mostViewed' ? `viewed/${period}.json` :
+                       type === 'mostEmailed' ? `emailed/${period}.json` :
+                       `shared/${period}/facebook.json`; // default to mostShared
         return `${baseUrl}${endpoint}?api-key=${apiKey}`;
     }
 
-    //Update the DOM with the fetched articles
+    // DOM with fetched articles
     function displayArticles(articles) {
         articlesContainer.innerHTML = '';
-        articles.slice(0, 5).forEach(article => { //Only display the top 5 articles
+        articles.slice(0,5).forEach((article, index) => {
             const articleDiv = document.createElement('div');
             articleDiv.className = 'article';
             articleDiv.innerHTML = `
-                <h3>${article.title}</h3>
-                <p>${article.abstract}</p>
-                ${article.media && article.media.length > 0 && article.media[0]['media-metadata'] ? 
-                `<img src="${article.media[0]['media-metadata'][0].url}" alt="${article.title}">` : ''}
+                <div class="article-header">
+                    <h3 class="article-title">${index + 1}) ${article.title}</h3>
+                    <span class="article-date">${new Date(article.published_date).toLocaleDateString()}</span>
+                </div>
+                <div class="article-content">
+                    <img src="${getArticleImageUrl(article)}" alt="${article.title}" class="article-image">
+                    <p class="article-abstract">${article.abstract}</p>
+                </div>
             `;
             articlesContainer.appendChild(articleDiv);
         });
     }
 
-    //Listen for changes on the 'Sort By' and 'Time Frame'
+    // Function to get the article image URL
+    function getArticleImageUrl(article) {
+        return article.media && article.media.length > 0 && article.media[0]['media-metadata'] ?
+               article.media[0]['media-metadata'][0].url : 'placeholder.jpg';
+    }
+
+    // Event listeners for filter
     document.querySelectorAll('input[name="sort"], input[name="time"]').forEach(input => {
         input.addEventListener('change', () => {
             const period = document.querySelector('input[name="time"]:checked').value;
@@ -61,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
             loadArticles(sortType, period);
         });
     });
-
     
-    loadArticles('mostViewed', 1);
+    loadArticles('mostViewed', '1');
 });
