@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const apiKey = 'KtdAxMvdsmo0lF65Qj2i8QRfUUBgJINf';
     const baseUrl = 'https://api.nytimes.com/svc/mostpopular/v2/';
 
-    // Fetch and display articles based on sort type and period
+    // Fetch and display articles
     function loadArticles(type, period) {
         const url = buildUrl(type, period);
         fetch(url)
